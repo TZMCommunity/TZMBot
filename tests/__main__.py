@@ -1,5 +1,5 @@
 import unittest
 
-from tests import BasicTests
+from tests.tests import BasicTests
 
 unittest.main()
