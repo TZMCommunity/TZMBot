@@ -1,9 +1,13 @@
+import logging
+
 from discord.ext import commands
 
 from TZMBot import settings
 
 WELCOME_MESASGE = "{member.mention} just joined. welcome!"
 GOODBYE_MESSAGE = "{member.mention} ({member}) just left. goodbye!"
+
+logger = logging.getLogger("__main__")
 
 
 class Welcoming(commands.Cog):
@@ -16,6 +20,8 @@ class Welcoming(commands.Cog):
     async def async_setup(self):
         await self.client.wait_until_ready()
         self.welcome_channel = self.client.get_channel(settings.WELCOME_CHANNEL_ID)
+
+        logger.info("Welcoming cog async_setup complete")
 
     async def welcome_goodbye(self, member, message):
         if member.guild.id == self.welcome_channel.guild.id:

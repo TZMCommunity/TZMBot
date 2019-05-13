@@ -1,7 +1,11 @@
+import logging
+
 import discord
 from discord.ext import commands
 
 from TZMBot import settings, utils
+
+logger = logging.getLogger("__main__")
 
 
 class SelfAssignableRoles(commands.Cog):
@@ -35,6 +39,8 @@ class SelfAssignableRoles(commands.Cog):
         await self.message.clear_reactions()
         await utils.add_many_reactions(self.message, *self.dict.keys())
         self.active = True
+
+        logger.info("SelfAssignableRoles cog async_setup complete")
 
     def make_embed(self) -> discord.Embed:
         embed = discord.Embed(

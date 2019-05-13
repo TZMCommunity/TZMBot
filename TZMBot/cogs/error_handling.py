@@ -1,10 +1,13 @@
 import asyncio
+import logging
 import sys
 import traceback
 
 from discord.ext import commands
 
 from TZMBot import settings, utils
+
+logger = logging.getLogger("__main__")
 
 
 class ErrorHandling(commands.Cog):
@@ -15,7 +18,10 @@ class ErrorHandling(commands.Cog):
         self.client.loop.create_task(self.async_setup())
 
     async def async_setup(self):
+        await self.client.wait_until_ready()
         self.error_channel = self.client.get_channel(settings.ERROR_CHANNEL_ID)
+
+        logger.info("ErrorHandling cog async_setup complete")
 
     async def err_reporting(self, ctx, err):
         report_confirmation = await ctx.send(
