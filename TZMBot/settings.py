@@ -38,16 +38,26 @@ DEV_IDS: Tuple[int] = (int(os.environ.get("DISCORD_DEV_ID", 0)),)
 # If bot has any errors, output them in specific channels.
 ERROR_CHANNEL_ID: int = int(os.environ.get("DISCORD_ERROR_CHANNEL", 0))
 SAR_CHANNEL_ID = int(os.environ.get("DISCORD_SAR_CHANNEL", 0))
-SAR_MESSAGE_ID = int(os.environ.get("DISCORD_SAR_MESSAGE", 0))
 WELCOME_CHANNEL_ID = int(os.environ.get("DISCORD_WELCOME_CHANNEL", 0))
 
 SAR_CONFIG = {
-    "categories": {
-        "Numbers And Colours": {
-            "\U0001f535": 568088714845356054,
-            "1\u20e3": 568088763670986812,
-        },
-        "True Statements": {"\u2705": 568088828242427906},
+    577950134378430506: {        
+        "categories": {
+            "Numbers And Colours": {
+                "\U0001f535": 568088714845356054,
+                "1\u20e3": 568088763670986812,
+            },
+            "True Statements": {"\u2705": 568088828242427906},
+        }
+    },
+    578331396704043008: {
+        "categories": {
+            "Numbers And Colours II": {
+                "\U0001f535": 568088714845356054,
+                "1\u20e3": 568088763670986812,
+            },
+            "True Statements II": {"\u2705": 568088828242427906},
+        }
     }
 }
 
