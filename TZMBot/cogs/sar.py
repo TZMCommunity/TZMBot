@@ -33,27 +33,27 @@ class SelfAssignableRoles(commands.Cog):
             await self.async_setup()
         except Exception as e:
             logger.error("SelfAssignableRoles ERROR " + str(e))
-    
+
     async def async_setup(self):
         self.channel = self.client.get_channel(settings.SAR_CHANNEL_ID)
         if not isinstance(self.channel, discord.TextChannel):
             raise ValueError(
-                "SAR_CHANNEL_ID config variable must correspond to a TextChannel " + str(settings.SAR_CHANNEL_ID)
+                "SAR_CHANNEL_ID config variable must correspond to a TextChannel "
+                + str(settings.SAR_CHANNEL_ID)
             )
 
         for message_id in self.config:
             logger.info("SelfAssignableRoles setup message_id " + str(message_id))
-            
+
             message = await self.channel.fetch_message(message_id)
             self.messages[message_id] = message
-            
+
             await message.edit(embed=self.make_embed(message_id), content=None)
             await message.clear_reactions()
             await utils.add_many_reactions(message, *self.dict.keys())
-        
-        self.active = True
 
-        logger.info("SelfAssignableRoles cog async_setup complete")
+        self.active = True
+        logger.info("SelfAssignableRoles cog async_setup complete, now active")
 
     def make_embed(self, message_id) -> discord.Embed:
         embed = discord.Embed(
@@ -86,7 +86,9 @@ class SelfAssignableRoles(commands.Cog):
                 await member.add_roles(role, reason="Added via the SAR system.")
                 message = f'{member.mention}, I gave you a "{role}" role!'
 
-            await self.messages[payload.message_id].remove_reaction(payload.emoji.name, member)
+            await self.messages[payload.message_id].remove_reaction(
+                payload.emoji.name, member
+            )
             await self.channel.send(message, delete_after=8)
 
 
