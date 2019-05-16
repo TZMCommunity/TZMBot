@@ -15,8 +15,8 @@ class SelfAssignableRoles(commands.Cog):
 
         self.dict = {
             emoji: role_id
-            for messageid in self.config.keys()
-            for category in self.config[messageid]["categories"].values()
+            for message_id in self.config.keys()
+            for category in self.config[message_id]["categories"].values()
             for emoji, role_id in category.items()
         }
 
@@ -41,13 +41,13 @@ class SelfAssignableRoles(commands.Cog):
                 "SAR_CHANNEL_ID config variable must correspond to a TextChannel " + str(settings.SAR_CHANNEL_ID)
             )
 
-        for messageid in self.config.keys():
-            logger.info("SelfAssignableRoles setup messageid " + str(messageid))
+        for message_id in self.config.keys():
+            logger.info("SelfAssignableRoles setup message_id " + str(message_id))
             
-            message = await self.channel.fetch_message(messageid)
-            self.messages[messageid] = message
+            message = await self.channel.fetch_message(message_id)
+            self.messages[message_id] = message
             
-            await message.edit(embed=self.make_embed(messageid), content=None)
+            await message.edit(embed=self.make_embed(message_id), content=None)
             await message.clear_reactions()
             await utils.add_many_reactions(message, *self.dict.keys())
         
@@ -55,12 +55,12 @@ class SelfAssignableRoles(commands.Cog):
 
         logger.info("SelfAssignableRoles cog async_setup complete")
 
-    def make_embed(self, messageid) -> discord.Embed:
+    def make_embed(self, message_id) -> discord.Embed:
         embed = discord.Embed(
             title="Self-Assignable Roles",
             description="Click a reaction below to obtain a role, click it again to remove it.",
         )
-        for name, category in self.config[messageid]["categories"].items():
+        for name, category in self.config[message_id]["categories"].items():
             value = ""
             for emoji, role_id in category.items():
                 role = self.channel.guild.get_role(role_id)
