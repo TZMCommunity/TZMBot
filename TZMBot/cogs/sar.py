@@ -41,7 +41,7 @@ class SelfAssignableRoles(commands.Cog):
                 "SAR_CHANNEL_ID config variable must correspond to a TextChannel " + str(settings.SAR_CHANNEL_ID)
             )
 
-        for message_id in self.config.keys():
+        for message_id in self.config:
             logger.info("SelfAssignableRoles setup message_id " + str(message_id))
             
             message = await self.channel.fetch_message(message_id)
