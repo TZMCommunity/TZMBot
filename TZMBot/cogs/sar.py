@@ -24,9 +24,9 @@ class SelfAssignableRoles(commands.Cog):
         self.message = None
         self.active = False
         self.messages = {}
-        self.client.loop.create_task(self.async_call_setup())
+        self.client.loop.create_task(self.call_setup())
 
-    async def async_call_setup(self):
+    async def call_setup(self):
         await self.client.wait_until_ready()
 
         try:
