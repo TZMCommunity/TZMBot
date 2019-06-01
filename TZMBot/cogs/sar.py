@@ -15,7 +15,7 @@ class SelfAssignableRoles(commands.Cog):
 
         self.dict = {
             emoji: role_id
-            for message_id in self.config.keys()
+            for message_id in self.config
             for category in self.config[message_id]["categories"].values()
             for emoji, role_id in category.items()
         }
@@ -49,7 +49,7 @@ class SelfAssignableRoles(commands.Cog):
 
             await message.edit(embed=self.make_embed(message_id), content=None)
             await message.clear_reactions()
-            await utils.add_many_reactions(message, *self.dict.keys())
+            await utils.add_many_reactions(message, *self.dict)
 
         self.active = True
         logger.info("SelfAssignableRoles cog async_setup complete, now active")
@@ -73,7 +73,7 @@ class SelfAssignableRoles(commands.Cog):
             self.active
             and payload.message_id in self.messages
             and payload.channel_id == self.channel.id
-            and payload.emoji.name in self.dict.keys()
+            and payload.emoji.name in self.dict
         ):
             role = self.channel.guild.get_role(self.dict[payload.emoji.name])
             member = self.channel.guild.get_member(payload.user_id)
