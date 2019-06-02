@@ -54,7 +54,7 @@ class SelfAssignableRoles(commands.Cog):
         self.active = True
         logger.info("SelfAssignableRoles cog async_setup complete, now active")
 
-    def make_embed(self, message_id) -> discord.Embed:
+    def make_embed(self, message_id: int) -> discord.Embed:
         embed = discord.Embed(
             title="Self-Assignable Roles",
             description="Click a reaction below to obtain a role, click it again to remove it.",
