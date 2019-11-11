@@ -5,14 +5,14 @@ RUN apt-get install libffi-dev libnacl-dev python3-dev -y
 
 COPY Pipfile /
 COPY Pipfile.lock /
-COPY profile /
+#COPY profile /
 
 RUN pip install pipenv
 RUN pipenv install --system
 
-ENV DISCORD_TOKEN=mytoken
-ENV DISCORD_ERROR_CHANNEL=mychannel
-ENV DISCORD_DEV_ID=myid
+#ENV DISCORD_TOKEN=mytoken
+#ENV DISCORD_ERROR_CHANNEL=mychannel
+#ENV DISCORD_DEV_ID=myid
 ENV PYTHONPATH=/app
 
 COPY TZMBot/ /app/TZMBot

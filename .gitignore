@@ -187,3 +187,7 @@ dmypy.json
 debug.log
 .idea
 db.sqlite
+
+/.project
+/.pydevproject
+/.settings/
