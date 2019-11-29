@@ -4,7 +4,7 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-black = "*"
+#black = "*"
 asynctest = "*"
 coverage = "*"
 coveralls = "*"
@@ -12,9 +12,9 @@ sphinx = "*"
 pre-commit = "*"
 
 [packages]
-discord-py = {git = "https://github.com/Rapptz/discord.py",ref = "rewrite",extras = ["voice"]}
+discord-py = {git = "https://github.com/Rapptz/discord.py",ref = "master",extras = ["voice"]}
 tortoise-orm = "*"
 aiosqlite = "*"
 
 [requires]
-python_version = "3.6"
+python_version = "3.8"
