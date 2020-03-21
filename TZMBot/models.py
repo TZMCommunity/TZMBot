@@ -13,7 +13,7 @@ class Biography(Model):
     """
 
     id = fields.IntField(pk=True)
-    person = fields.TextField(unique=True)
+    person = fields.CharField(unique=True, max_length=50)
     content = fields.TextField(null=True)
 
     def __str__(self) -> str:
