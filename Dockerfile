@@ -13,7 +13,8 @@ RUN pipenv install
 RUN pipenv update
 RUN pipenv install
 RUN python3 -m pip install discord.py
-RUN python3 -m pip install tortoise
+RUN python3 -m pip install tortoise-orm
+RUN pipenv graph
 
 #ENV DISCORD_TOKEN=mytoken
 #ENV DISCORD_ERROR_CHANNEL=mychannel
