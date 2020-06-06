@@ -41,7 +41,7 @@ SAR_CHANNEL_ID = int(os.environ.get("DISCORD_SAR_CHANNEL", 0))
 WELCOME_CHANNEL_ID = int(os.environ.get("DISCORD_WELCOME_CHANNEL", 0))
 
 SAR_CONFIG = {
-    649716342483845141: {
+    718903325365633067: {
         "categories": {
             "Continents": {
                 "1\u20e3": 568088763670986812,
