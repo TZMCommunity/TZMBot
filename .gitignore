@@ -191,3 +191,7 @@ db.sqlite
 /.project
 /.pydevproject
 /.settings/
+
+*~
+/env_file
+/env_file.prod
