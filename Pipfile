@@ -15,6 +15,7 @@ pre-commit = "*"
 discord-py = {git = "https://github.com/Rapptz/discord.py",ref = "master",extras = ["voice"]}
 tortoise-orm = "*"
 aiosqlite = "*"
+tortoise = "*"
 
 [requires]
 python_version = "3.8"
